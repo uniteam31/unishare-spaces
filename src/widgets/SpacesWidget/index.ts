@@ -1,1 +1,1 @@
-export { SpacesWidget } from './ui/SpacesWidget';
+export { SpacesWidget as default } from './ui/SpacesWidget';

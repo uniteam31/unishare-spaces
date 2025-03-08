@@ -11,6 +11,8 @@ export {
 	//
 	Text,
 	//
+	TextAlign,
+	//
 	Avatar,
 	//
 	Widget,
@@ -18,4 +20,8 @@ export {
 	Divider,
 	//
 	Link,
+	//
+	Modal as ModalUI,
 } from '@uniteam31/uni-shared-ui';
+
+export { FormModalWrapper } from './FormModalWrapper';
