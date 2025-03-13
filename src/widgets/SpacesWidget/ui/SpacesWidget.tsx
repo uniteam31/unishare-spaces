@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import SpaceIcon from 'shared/assets/icons/space.svg';
 import { Widget } from 'shared/ui';
 import s from './SpacesWidget.module.scss';
 
@@ -11,7 +12,11 @@ export const SpacesWidget = (props: Props) => {
 
 	return (
 		<div className={classNames(s.SpacesWidget, className)}>
-			<Widget title={'Пространства'} to={'/spaces'}></Widget>
+			<Widget
+				title={'Пространства'}
+				to={'/spaces'}
+				Icon={<SpaceIcon className={s.icon} />}
+			></Widget>
 		</div>
 	);
 };

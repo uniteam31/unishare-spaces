@@ -1,15 +1,15 @@
-import { FormWrapper } from '@uniteam31/uni-shared-toolkit';
 import type { TSpaceFormFields } from 'entitites/Space';
 import { useForm } from 'react-hook-form';
+import { FormWrapper } from 'shared/lib';
 import { ModalUI } from 'shared/ui';
-import { Form } from '../Form/Form';
+import { CreateForm } from '../CreateForm/CreateForm';
 
 type Props = {
 	isOpen: boolean;
 	onClose: () => void;
 };
 
-export const Modal = (props: Props) => {
+export const CreateModal = (props: Props) => {
 	const { isOpen, onClose } = props;
 
 	const methods = useForm<TSpaceFormFields>();
@@ -17,7 +17,7 @@ export const Modal = (props: Props) => {
 	return (
 		<ModalUI isOpen={isOpen} onClose={onClose}>
 			<FormWrapper methods={methods}>
-				<Form onFormClose={onClose} />
+				<CreateForm onFormClose={onClose} />
 			</FormWrapper>
 		</ModalUI>
 	);

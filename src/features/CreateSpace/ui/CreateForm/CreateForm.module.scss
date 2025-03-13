@@ -1,0 +1,41 @@
+.input {
+	flex: 1;
+	height: 50px;
+	margin-bottom: 20px;
+}
+
+.CreateForm {
+	width: 400px;
+
+	.select {
+		height: 40px;
+		margin-bottom: var(--medium-indent);
+		width: 100%;
+
+		.selectAvatar {
+			height: 30px;
+			width: 30px;
+		}
+
+		.selectedAvatar {
+			height: 15px;
+			width: 15px;
+		}
+	}
+
+	.info {
+		align-items: flex-end;
+		display: flex;
+		gap: var(--big-indent);
+		margin-bottom: var(--medium-indent);
+
+		.avatar {
+			height: 100px;
+			width: 100px;
+		}
+
+		.input {
+			margin-bottom: 0;
+		}
+	}
+}

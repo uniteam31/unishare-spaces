@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import type { PropsWithChildren } from 'react';
 import { formatApiErrorMessages } from '../../../lib';
 import { Button, Text, TextAlign, Warning } from '../../../ui';
@@ -7,12 +8,14 @@ type Props = {
 	title: string;
 	text?: string;
 	//
-	onSubmit: () => void;
+	onSubmit?: () => void;
 	onReset?: () => void;
 	//
 	isDirty?: boolean;
 	isLoading?: boolean;
 	errors?: string | null;
+	//
+	className?: string;
 };
 
 // TODO взять из тулкита, как только Костя вынесет
@@ -20,14 +23,15 @@ type Props = {
  * @description Предоставляет базовый UI для форм, которые находятся в модальном окне
  * */
 export const FormModalWrapper = (props: PropsWithChildren<Props>) => {
-	const { title, text, onSubmit, onReset, isDirty, errors, isLoading, children } = props;
+	const { title, text, onSubmit, onReset, isDirty, errors, isLoading, children, className } =
+		props;
 
 	const handleReset = () => {
 		onReset?.();
 	};
 
 	return (
-		<form className={s.FormModalWrapper} onSubmit={onSubmit}>
+		<form className={classNames(s.FormModalWrapper, className)} onSubmit={onSubmit}>
 			<div>
 				<Text className={s.title} title={title} text={text} align={TextAlign.CENTER} />
 

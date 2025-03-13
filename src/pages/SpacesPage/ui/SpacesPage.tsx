@@ -12,9 +12,14 @@ export const SpacesPage = () => {
 
 	return (
 		<div className={s.SpacesPage}>
-			<Button onClick={handleCreateSpaceModal}>Создать пространство</Button>
+			<div className={s.content}>
+				<Button onClick={handleCreateSpaceModal}>Создать пространство</Button>
 
-			<CreateSpace.Modal isOpen={isCreateSpaceModalOpen} onClose={handleCreateSpaceModal} />
+				<CreateSpace.CreateModal
+					isOpen={isCreateSpaceModalOpen}
+					onClose={handleCreateSpaceModal}
+				/>
+			</div>
 		</div>
 	);
 };

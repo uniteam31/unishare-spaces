@@ -1,11 +1,11 @@
-import { Modal } from './ui/Modal/Modal';
+import { CreateModal } from './ui/CreateModal/CreateModal';
 
 type TCreateSpaceComponents = {
-	Modal: typeof Modal;
+	CreateModal: typeof CreateModal;
 };
 
 const CreateSpace: TCreateSpaceComponents = {
-	Modal,
+	CreateModal,
 };
 
 export { CreateSpace };

@@ -1,5 +1,11 @@
 .SpacesPage {
 	background-color: #fff;
 	height: 100%;
+	margin: 0 auto;
 	width: 100%;
+
+	.content {
+		margin: 0 auto;
+		width: 600px;
+	}
 }
