@@ -15,10 +15,12 @@ export const SpacesPage = () => {
 			<div className={s.content}>
 				<Button onClick={handleCreateSpaceModal}>Создать пространство</Button>
 
-				<CreateSpace.CreateModal
-					isOpen={isCreateSpaceModalOpen}
-					onClose={handleCreateSpaceModal}
-				/>
+				{isCreateSpaceModalOpen && (
+					<CreateSpace.CreateModal
+						isOpen={isCreateSpaceModalOpen}
+						onClose={handleCreateSpaceModal}
+					/>
+				)}
 			</div>
 		</div>
 	);
