@@ -75,8 +75,8 @@
 	"dependencies": {
 		"@hookform/resolvers": "3.10.0",
 		"@uniteam31/uni-shared-toolkit": "0.0.3",
-		"@uniteam31/uni-shared-types": "0.0.5",
-		"@uniteam31/uni-shared-ui": "0.0.17",
+		"@uniteam31/uni-shared-types": "0.0.7",
+		"@uniteam31/uni-shared-ui": "0.0.19",
 		"axios": "1.7.9",
 		"classnames": "2.5.1",
 		"dotenv-defaults": "5.0.2",

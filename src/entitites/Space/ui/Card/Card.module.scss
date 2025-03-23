@@ -1,0 +1,62 @@
+.Card {
+	border: solid var(--mid-gray-bg-color) 1px;
+	border-radius: var(--medium-round);
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium-indent);
+	justify-content: space-between;
+	min-height: 230px;
+	padding: var(--medium-indent);
+	transition: all 0.3s;
+	width: 230px;
+
+	.avatar {
+		height: 70px;
+		width: 70px;
+	}
+
+	.icon {
+		cursor: pointer;
+		height: 25px;
+		transition: scale 0.3s;
+		width: 25px;
+
+		&:hover {
+			scale: 1.1;
+		}
+	}
+
+	.membersTitle {
+		color: #717171;
+		margin-top: var(--medium-indent);
+	}
+
+	.members {
+		display: flex;
+
+		.memberAvatar {
+			border: solid 1px #fff;
+			height: 32px;
+			width: 32px;
+		}
+
+		.membersPlusCounter {
+			align-items: center;
+			background-color: var(--mid-gray-bg-color);
+			border: solid 1px #fff;
+			border-radius: 50%;
+			display: flex;
+			font-size: 13px;
+			height: 32px;
+			justify-content: center;
+			transform: translateX(-60px);
+			width: 32px;
+		}
+	}
+
+	&:hover {
+		// TODO в переменную
+		background-color: #EAEAEC;
+	}
+}

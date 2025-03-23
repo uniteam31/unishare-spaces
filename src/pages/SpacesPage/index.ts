@@ -1,1 +1,1 @@
-export { SpacesPage } from './ui/SpacesPage';
+export { SpacesPage } from './ui/SpacesPage/SpacesPage';

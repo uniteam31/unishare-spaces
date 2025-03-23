@@ -1,0 +1,13 @@
+.SpacesPage {
+	background-color: #fff;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	width: 100%;
+
+	.tabs {
+		overflow: scroll;
+		padding: var(--big-indent);
+		width: 535px;
+	}
+}

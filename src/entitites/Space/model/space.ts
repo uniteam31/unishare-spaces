@@ -1,5 +1,9 @@
-import type { ISpace } from '@uniteam31/uni-shared-types';
+import type { ISpace, IUser } from '@uniteam31/uni-shared-types';
 
-type TSpaceFormFields = Pick<ISpace, 'name' | 'membersIDs'>;
+type TSpaceFormFields = Pick<ISpace, 'name'> & {
+	membersIDs: IUser['id'][];
+};
 
-export type { ISpace, TSpaceFormFields };
+type TSpaceMember = ISpace['members'][number];
+
+export type { ISpace, TSpaceFormFields, TSpaceMember };

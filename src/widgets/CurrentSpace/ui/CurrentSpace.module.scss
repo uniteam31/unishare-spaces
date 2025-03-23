@@ -1,0 +1,21 @@
+.CurrentSpace {
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium-indent);
+
+	.spaceInfo {
+		display: flex;
+		gap: var(--medium-indent);
+	}
+
+	.membersList {
+		display: flex;
+		flex-direction: column;
+		gap: var(--medium-indent);
+	}
+
+	.avatar {
+		height: 150px;
+		width: 150px;
+	}
+}

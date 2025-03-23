@@ -26,6 +26,12 @@ export {
 	Select,
 	//
 	TSelectItem,
+	//
+	Popup,
+	//
+	DropdownMenu,
+	//
+	TDropdownItem,
 } from '@uniteam31/uni-shared-ui';
 
 export { FormModalWrapper } from './FormModalWrapper';
