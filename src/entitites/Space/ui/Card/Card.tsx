@@ -4,14 +4,19 @@ import type { ISpace } from '../../model/space';
 import s from './Card.module.scss';
 
 type Props = ISpace & {
+	onClick?: (spaceID: ISpace['id']) => void;
 	className?: string;
 };
 
 export const Card = (props: Props) => {
-	const { name, members, className } = props;
+	const { id, name, members, onClick, className } = props;
+
+	const handleClick = () => {
+		onClick?.(id);
+	};
 
 	return (
-		<div className={classNames(s.Card, className)}>
+		<div className={classNames(s.Card, className)} onClick={handleClick}>
 			{/* TODO расхардкодить */}
 			<div>
 				<Avatar
@@ -34,6 +39,7 @@ export const Card = (props: Props) => {
 							style={{ transform: `translateX(-${index * 15}px)` }}
 						/>
 					))}
+
 					{members.length > 4 && (
 						<>
 							<div className={s.membersPlusCounter}>+{members.length - 4}</div>

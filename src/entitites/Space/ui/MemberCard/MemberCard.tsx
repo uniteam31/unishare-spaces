@@ -39,7 +39,7 @@ export const MemberCard = (props: Props) => {
 				</div>
 			</div>
 
-			{dropdownMenuItems && (
+			{dropdownMenuItems && dropdownMenuItems.length > 0 && (
 				<DropdownMenu
 					target={
 						<Button className={s.menuButton} onClick={handleToggleDropdownMenu}>

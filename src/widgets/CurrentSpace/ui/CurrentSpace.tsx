@@ -1,10 +1,16 @@
 import { Space, useGetCurrentSpaceInfo } from 'entitites/Space';
+import { useUserStore } from 'entitites/User';
+import { DeleteSpaceMember } from 'features/DeleteSpaceMember';
 import { Text, Avatar, Divider } from 'shared/ui';
 import s from './CurrentSpace.module.scss';
 
 export const CurrentSpace = () => {
 	// TODO лоадеры
 	const { space } = useGetCurrentSpaceInfo();
+	const { authData } = useUserStore();
+
+	// TODO: в будущем проверять и по редакторам
+	const canUserEditSpaceMembers = authData?.id === space?.ownerID;
 
 	return (
 		<div className={s.CurrentSpace}>
@@ -29,14 +35,24 @@ export const CurrentSpace = () => {
 
 			<Divider direction={'horizontal'} />
 
+			<Text title={'Участники:'} />
+
 			<div className={s.membersList}>
-				{space?.members.map((member) => (
-					<Space.MemberCard
-						key={member.id}
-						{...member}
-						dropdownMenuItems={[{ label: 'На мороз' }]}
-					/>
-				))}
+				{space?.members.map((member) => {
+					const dropdownMenuItems = [];
+
+					if (authData?.id !== member.id && canUserEditSpaceMembers) {
+						dropdownMenuItems.push({ label: <DeleteSpaceMember userID={member.id} /> });
+					}
+
+					return (
+						<Space.MemberCard
+							key={member.id}
+							{...member}
+							dropdownMenuItems={dropdownMenuItems}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);

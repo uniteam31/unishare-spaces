@@ -74,7 +74,7 @@
 	},
 	"dependencies": {
 		"@hookform/resolvers": "3.10.0",
-		"@uniteam31/uni-shared-toolkit": "0.0.3",
+		"@uniteam31/uni-shared-toolkit": "0.0.4",
 		"@uniteam31/uni-shared-types": "0.0.7",
 		"@uniteam31/uni-shared-ui": "0.0.19",
 		"axios": "1.7.9",

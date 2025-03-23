@@ -2,18 +2,25 @@ import classNames from 'classnames';
 import React, { memo, useCallback, useState } from 'react';
 import { CreateSpace } from 'features/CreateSpace';
 import { Button } from 'shared/ui';
-import { spacesTabs } from '../../model/spacesTabs';
-import type { TSpacesTabsName } from '../../model/spacesTabs';
+import { useSpacesPageStore } from '../../model/slice/useSpacesPageStore';
+import type { TSpacesTabsName } from '../../model/types/spacesTabs';
 import s from './TabsSelector.module.scss';
 
-interface ITabsSelectorProps {
-	onClickTab: (tabName: TSpacesTabsName) => void;
-	currentTab: TSpacesTabsName;
-}
+type TSpacesTab = {
+	title: string;
+};
 
-// TODO: используется в нескольким
-export const TabsSelector = memo((props: ITabsSelectorProps) => {
-	const { onClickTab, currentTab } = props;
+export const spacesTabs: Record<TSpacesTabsName, TSpacesTab> = {
+	currentSpace: {
+		title: 'Текущее пространство',
+	},
+	mySpaces: {
+		title: 'Мои пространства',
+	},
+};
+
+export const TabsSelector = memo(() => {
+	const { selectedTab, setSelectedTab } = useSpacesPageStore();
 
 	const [isCreateSpaceModalOpen, setIsCreateSpaceModalOpen] = useState(false);
 
@@ -23,9 +30,9 @@ export const TabsSelector = memo((props: ITabsSelectorProps) => {
 
 	const handleSelectTab = useCallback(
 		(tabName: TSpacesTabsName) => {
-			onClickTab(tabName);
+			setSelectedTab(tabName);
 		},
-		[onClickTab],
+		[setSelectedTab],
 	);
 
 	const arrayTabs = Object.entries(spacesTabs);
@@ -43,7 +50,7 @@ export const TabsSelector = memo((props: ITabsSelectorProps) => {
 
 			{arrayTabs.map(([tabName, tab]) => (
 				<div
-					className={classNames(s.tabsSelectorItem, tabName === currentTab && s.active)}
+					className={classNames(s.tabsSelectorItem, tabName === selectedTab && s.active)}
 					onClick={() => handleSelectTab(tabName as TSpacesTabsName)}
 					key={tab.title}
 				>
