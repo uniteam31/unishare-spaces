@@ -1,0 +1,17 @@
+.MySpaces {
+	.emptyMessage {
+		margin-top: var(--medium-indent);
+	}
+
+	.skeleton {
+		height: 230px;
+		width: 230px;
+	}
+
+	.list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--medium-indent);
+		margin-top: var(--medium-indent);
+	}
+}

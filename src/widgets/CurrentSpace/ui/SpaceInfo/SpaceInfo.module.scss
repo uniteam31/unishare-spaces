@@ -1,0 +1,29 @@
+.SpaceInfo {
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium-indent);
+
+	.description {
+		display: flex;
+		gap: var(--medium-indent);
+		position: relative;
+
+		.leaveSpaceButton {
+			bottom: 0;
+			position: absolute;
+			right: 0;
+		}
+	}
+
+	.membersList {
+		display: flex;
+		flex-direction: column;
+		gap: var(--medium-indent);
+	}
+
+	.avatar {
+		height: 150px;
+		width: 150px;
+	}
+}
+

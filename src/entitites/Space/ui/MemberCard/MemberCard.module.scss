@@ -1,0 +1,33 @@
+.MemberCard {
+	align-items: center;
+	border: solid var(--mid-gray-bg-color) 1px;
+	border-radius: var(--medium-round);
+	display: flex;
+	justify-content: space-between;
+	padding: var(--small-indent);
+
+	.avatar {
+		height: 50px;
+		width: 50px;
+	}
+
+	.userInfo {
+		align-items: center;
+		display: flex;
+		gap: var(--small-indent);
+
+		.username {
+			font-weight: 600;
+		}
+	}
+
+	.menuButton {
+		align-items: center;
+		background-color: var(--mid-gray-bg-color);
+		display: flex;
+		height: 25px;
+		justify-content: center;
+		padding: 0;
+		width: 25px;
+	}
+}

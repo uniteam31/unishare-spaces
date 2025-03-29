@@ -1,7 +1,9 @@
 import { useGetFriendsList } from 'entitites/Friends';
+import { useGetUserSpaces } from 'entitites/Space';
 import type { TSpaceFormFields } from 'entitites/Space';
 import { useCallback } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import { SpaceIDController } from 'shared/lib';
 import { FormModalWrapper, Input, Select, Avatar } from 'shared/ui';
 import type { TSelectItem } from 'shared/ui';
 import { useCreateSpace } from '../../api/useCreateSpace';
@@ -16,6 +18,7 @@ export const CreateForm = (props: Props) => {
 
 	// TODO состояния
 	const { friendsList } = useGetFriendsList();
+	const { mutateSpaces } = useGetUserSpaces();
 
 	const {
 		control,
@@ -37,16 +40,16 @@ export const CreateForm = (props: Props) => {
 
 	const friendsItems: TSelectItem[] = friendsList.map((friend) => ({
 		label: friend.firstName,
-		value: friend._id,
+		value: friend.id,
 		contentLeft: <Avatar src={friend.avatar} className={s.selectAvatar} />,
 	}));
 
 	const selectedFriendsItems: TSelectItem[] = membersIDs.map((memberID) => {
-		const friend = friendsList.find((friend) => friend._id === memberID);
+		const friend = friendsList.find((friend) => friend.id === memberID);
 
 		return {
 			label: friend!.firstName,
-			value: friend!._id,
+			value: friend!.id,
 			contentLeft: <Avatar src={friend!.avatar} className={s.selectedAvatar} />,
 		};
 	});
@@ -64,7 +67,11 @@ export const CreateForm = (props: Props) => {
 
 		// TODO
 		createSpace({ formValues })
-			.then(() => onFormClose())
+			.then((createdSpace) => {
+				SpaceIDController.setCurrentSpaceIDAndSendEvent(createdSpace.id);
+				onFormClose();
+				mutateSpaces().finally();
+			})
 			.catch((err) => console.log(err));
 	};
 
@@ -100,15 +107,17 @@ export const CreateForm = (props: Props) => {
 				/>
 			</div>
 
-			<Select
-				className={s.select}
-				placeholder={'Добавьте участников'}
-				items={friendsItems}
-				selectedItems={selectedFriendsItems}
-				onSelect={handleSelectMembers}
-				multiselect={true}
-				closeOnClickOutside={true}
-			/>
+			{!!friendsItems.length && (
+				<Select
+					className={s.select}
+					placeholder={'Добавьте участников'}
+					items={friendsItems}
+					selectedItems={selectedFriendsItems}
+					onSelect={handleSelectMembers}
+					multiselect={true}
+					closeOnClickOutside={true}
+				/>
+			)}
 		</FormModalWrapper>
 	);
 };
