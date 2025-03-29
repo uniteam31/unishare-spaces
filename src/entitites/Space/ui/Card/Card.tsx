@@ -3,20 +3,25 @@ import { Avatar, Text } from 'shared/ui';
 import type { ISpace } from '../../model/space';
 import s from './Card.module.scss';
 
+type TSize = 'small' | 'medium';
+
 type Props = ISpace & {
 	onClick?: (spaceID: ISpace['id']) => void;
+	//
+	size?: TSize;
 	className?: string;
 };
 
 export const Card = (props: Props) => {
-	const { id, name, members, onClick, className } = props;
+	const { id, name, members, onClick } = props;
+	const { size = 'medium', className } = props;
 
 	const handleClick = () => {
 		onClick?.(id);
 	};
 
 	return (
-		<div className={classNames(s.Card, className)} onClick={handleClick}>
+		<div className={classNames(s.Card, s[size], className)} onClick={handleClick}>
 			{/* TODO расхардкодить */}
 			<div>
 				<Avatar
@@ -26,25 +31,25 @@ export const Card = (props: Props) => {
 					className={s.avatar}
 				/>
 
-				<Text title={name} className={s.personalInfo} />
-
-				<div className={s.membersTitle}>Участники: </div>
+				<Text title={name} size={size} />
 
 				<div className={s.members}>
-					{members.slice(0, 4).map((member, index) => (
-						<Avatar
-							src={member.avatar}
-							key={member.id}
-							className={s.memberAvatar}
-							style={{ transform: `translateX(-${index * 15}px)` }}
-						/>
-					))}
+					{size !== 'small' && <div className={s.membersTitle}>Участники:</div>}
 
-					{members.length > 4 && (
-						<>
+					<div className={s.membersList}>
+						{members.slice(0, 4).map((member, index) => (
+							<Avatar
+								src={member.avatar}
+								key={member.id}
+								className={s.memberAvatar}
+								style={{ transform: `translateX(-${index * 15}px)` }}
+							/>
+						))}
+
+						{members.length > 4 && (
 							<div className={s.membersPlusCounter}>+{members.length - 4}</div>
-						</>
-					)}
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
