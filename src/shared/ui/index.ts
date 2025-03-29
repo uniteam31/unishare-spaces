@@ -32,6 +32,9 @@ export {
 	DropdownMenu,
 	//
 	TDropdownItem,
+	//
+	TextTheme,
 } from '@uniteam31/uni-shared-ui';
 
 export { FormModalWrapper } from './FormModalWrapper';
+export { ConfirmModal } from './ConfirmModal';

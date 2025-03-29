@@ -1,0 +1,12 @@
+.ConfirmModal {
+	display: flex;
+	flex-direction: column;
+	gap: var(--medium-indent);
+	width: 280px;
+
+	.buttons {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;	
+	}
+}

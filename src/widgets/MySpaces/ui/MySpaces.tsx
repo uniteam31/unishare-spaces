@@ -1,6 +1,6 @@
 import { Space, useGetUserSpaces } from 'entitites/Space';
 import type { ISpace } from 'entitites/Space';
-import { Text } from 'shared/ui';
+import { Skeleton, Text, Warning } from 'shared/ui';
 import s from './MySpaces.module.scss';
 
 type Props = {
@@ -10,8 +10,7 @@ type Props = {
 export const MySpaces = (props: Props) => {
 	const { onSpaceClick } = props;
 
-	// TODO: лоадеры
-	const { spaces } = useGetUserSpaces();
+	const { spaces, isLoading, error } = useGetUserSpaces();
 
 	const handleSpaceClick = (spaceID: ISpace['id']) => {
 		onSpaceClick?.(spaceID);
@@ -24,11 +23,23 @@ export const MySpaces = (props: Props) => {
 				text={'Список всех пространств, в которых ты являешься участником'}
 			/>
 
-			<div className={s.list}>
-				{spaces.map((space) => (
-					<Space.Card onClick={handleSpaceClick} key={space.id} {...space} />
-				))}
-			</div>
+			{!isLoading && error && <Warning title={'Ошибка'} text={error} theme={'red'} />}
+
+			{isLoading && !error && (
+				<div className={s.list}>
+					{Array.from({ length: 5 }).map((_, index) => (
+						<Skeleton className={s.skeleton} key={index} />
+					))}
+				</div>
+			)}
+
+			{!isLoading && !error && (
+				<div className={s.list}>
+					{spaces.map((space) => (
+						<Space.Card onClick={handleSpaceClick} key={space.id} {...space} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

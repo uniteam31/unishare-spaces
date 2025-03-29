@@ -1,7 +1,9 @@
 import { useGetFriendsList } from 'entitites/Friends';
-import { TSpaceFormFields, useGetUserSpaces } from 'entitites/Space';
+import { useGetUserSpaces } from 'entitites/Space';
+import type { TSpaceFormFields } from 'entitites/Space';
 import { useCallback } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import { SpaceIDController } from 'shared/lib';
 import { FormModalWrapper, Input, Select, Avatar } from 'shared/ui';
 import type { TSelectItem } from 'shared/ui';
 import { useCreateSpace } from '../../api/useCreateSpace';
@@ -65,12 +67,10 @@ export const CreateForm = (props: Props) => {
 
 		// TODO
 		createSpace({ formValues })
-			.then(() => {
+			.then((createdSpace) => {
+				SpaceIDController.setCurrentSpaceIDAndSendEvent(createdSpace.id);
 				onFormClose();
 				mutateSpaces().finally();
-
-				const event = new CustomEvent('updateAuth');
-				window.dispatchEvent(event);
 			})
 			.catch((err) => console.log(err));
 	};

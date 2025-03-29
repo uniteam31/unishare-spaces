@@ -1,27 +1,21 @@
 import { Space, useGetCurrentSpaceInfo } from 'entitites/Space';
 import { useUserStore } from 'entitites/User';
 import { DeleteSpaceMember } from 'features/DeleteSpaceMember';
-import { Text, Avatar, Divider } from 'shared/ui';
-import s from './CurrentSpace.module.scss';
+import { LeaveSpace } from 'features/LeaveSpace';
+import { Avatar, Divider, Text } from 'shared/ui';
+import s from './SpaceInfo.module.scss';
 
-export const CurrentSpace = () => {
-	// TODO лоадеры
-	const { space } = useGetCurrentSpaceInfo();
+export const SpaceInfo = () => {
 	const { authData } = useUserStore();
+
+	const { space } = useGetCurrentSpaceInfo();
 
 	// TODO: в будущем проверять и по редакторам
 	const canUserEditSpaceMembers = authData?.id === space?.ownerID;
 
 	return (
-		<div className={s.CurrentSpace}>
-			<Text
-				title={'Текущее пространство'}
-				text={'Информация о пространстве, которое выбрано в данный момент'}
-			/>
-
-			<Divider direction={'horizontal'} />
-
-			<div className={s.spaceInfo}>
+		<div className={s.SpaceInfo}>
+			<div className={s.description}>
 				<Avatar
 					className={s.avatar}
 					src={
@@ -31,6 +25,8 @@ export const CurrentSpace = () => {
 				/>
 
 				<Text title={space?.name} text={space?.description} />
+
+				<LeaveSpace className={s.leaveSpaceButton} />
 			</div>
 
 			<Divider direction={'horizontal'} />

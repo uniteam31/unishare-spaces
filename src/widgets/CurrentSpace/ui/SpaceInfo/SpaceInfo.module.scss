@@ -1,11 +1,18 @@
-.CurrentSpace {
+.SpaceInfo {
 	display: flex;
 	flex-direction: column;
 	gap: var(--medium-indent);
 
-	.spaceInfo {
+	.description {
 		display: flex;
 		gap: var(--medium-indent);
+		position: relative;
+
+		.leaveSpaceButton {
+			bottom: 0;
+			position: absolute;
+			right: 0;
+		}
 	}
 
 	.membersList {
@@ -19,3 +26,4 @@
 		width: 150px;
 	}
 }
+

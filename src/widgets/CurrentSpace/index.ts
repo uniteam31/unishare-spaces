@@ -1,1 +1,1 @@
-export { CurrentSpace } from './ui/CurrentSpace';
+export { CurrentSpace } from './ui/CurrentSpace/CurrentSpace';
