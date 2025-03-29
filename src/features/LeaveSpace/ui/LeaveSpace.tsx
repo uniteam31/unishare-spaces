@@ -75,8 +75,9 @@ export const LeaveSpace = (props: Props) => {
 						/>
 					)}
 
+					<Text title={'Выход'} theme={TextTheme.ERROR} />
+
 					<Text
-						title={'Выход'}
 						text={'Вы уверены, что хотите выйти из пространства?'}
 						theme={TextTheme.ERROR}
 					/>

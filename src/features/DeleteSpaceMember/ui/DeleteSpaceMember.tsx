@@ -51,8 +51,9 @@ export const DeleteSpaceMember = (props: Props) => {
 					isLoading={isDeleting}
 					errors={error}
 				>
+					<Text title={'Удаление пользователя'} theme={TextTheme.ERROR} />
+
 					<Text
-						title={'Удаление пользователя'}
 						text={'Вы уверены, что хотите удалить пользователя из пространства?'}
 						theme={TextTheme.ERROR}
 					/>
