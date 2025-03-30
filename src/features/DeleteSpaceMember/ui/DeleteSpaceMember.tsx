@@ -14,7 +14,6 @@ export const DeleteSpaceMember = (props: Props) => {
 	const [isDeleteMemberModal, setIsDeleteMemberModal] = useState(false);
 
 	const { mutateSpace } = useGetCurrentSpaceInfo();
-	// TODO: лоадеры
 	const { deleteSpaceMember, isLoading: isDeleting, error } = useDeleteSpaceMember();
 
 	const handleToggleDeleteModal = () => {
