@@ -11,7 +11,7 @@ type Props = TSpaceMember & {
 };
 
 export const MemberCard = (props: Props) => {
-	const { id, username, firstName, lastName, dropdownMenuItems } = props;
+	const { id, avatar, username, firstName, lastName, dropdownMenuItems } = props;
 
 	const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
@@ -22,13 +22,7 @@ export const MemberCard = (props: Props) => {
 	return (
 		<div className={s.MemberCard}>
 			<div className={s.userInfo}>
-				<Avatar
-					// TODO расхардкодить
-					src={
-						'https://avatars.mds.yandex.net/i?id=29f7366ac823f46165612d9480e60f0e_l-13215132-images-thumbs&n=13'
-					}
-					className={s.avatar}
-				/>
+				<Avatar src={avatar} className={s.avatar} />
 
 				<div>
 					<div className={s.username}>{username}</div>
