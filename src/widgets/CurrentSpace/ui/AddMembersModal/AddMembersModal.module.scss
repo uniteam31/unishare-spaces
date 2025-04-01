@@ -1,0 +1,17 @@
+.header {
+	margin-bottom: var(--big-indent);
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small-indent);
+	max-height: 400px;
+	overflow-y: scroll;
+	width: 300px;
+}
+
+.skeleton {
+	height: 70px;
+	width: 100%;
+}

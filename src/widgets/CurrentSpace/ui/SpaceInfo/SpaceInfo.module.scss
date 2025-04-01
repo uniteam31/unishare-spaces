@@ -15,6 +15,11 @@
 		}
 	}
 
+	.membersHeader {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.membersList {
 		display: flex;
 		flex-direction: column;
