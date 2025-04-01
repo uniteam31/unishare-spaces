@@ -1,17 +1,20 @@
 import { useState } from 'react';
+import type { ReactNode } from 'react';
 import { Avatar, Button, DropdownMenu } from 'shared/ui';
 import type { TDropdownItem } from 'shared/ui';
 import type { TSpaceMember } from '../../model/space';
 import s from './MemberCard.module.scss';
 
 type Props = TSpaceMember & {
+	// TODO: мб в будущем вынести туда, где используется и прокидывать через contentRight
 	dropdownMenuItems?: TDropdownItem[];
+	contentRight?: ReactNode;
 	//
 	className?: string;
 };
 
 export const MemberCard = (props: Props) => {
-	const { id, avatar, username, firstName, lastName, dropdownMenuItems } = props;
+	const { id, avatar, username, firstName, lastName, dropdownMenuItems, contentRight } = props;
 
 	const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
@@ -46,6 +49,8 @@ export const MemberCard = (props: Props) => {
 					onClose={handleToggleDropdownMenu}
 				/>
 			)}
+
+			{contentRight}
 		</div>
 	);
 };

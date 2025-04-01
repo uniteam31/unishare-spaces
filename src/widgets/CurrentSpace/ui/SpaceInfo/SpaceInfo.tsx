@@ -1,12 +1,20 @@
 import { Space, useGetCurrentSpaceInfo } from 'entitites/Space';
 import { useUserStore } from 'entitites/User';
+import { useState } from 'react';
 import { DeleteSpaceMember } from 'features/DeleteSpaceMember';
 import { LeaveSpace } from 'features/LeaveSpace';
-import { Avatar, Divider, Text } from 'shared/ui';
+import { Avatar, Divider, Text, Button } from 'shared/ui';
+import { AddMembersModal } from '../AddMembersModal/AddMembersModal';
 import s from './SpaceInfo.module.scss';
 
 export const SpaceInfo = () => {
 	const { authData } = useUserStore();
+
+	const [isAddSpaceMembersModalOpen, setIsAddSpaceMembersModalOpen] = useState(false);
+
+	const handleToggleAddSpaceMembersList = () => {
+		setIsAddSpaceMembersModalOpen((prev) => !prev);
+	};
 
 	const { space } = useGetCurrentSpaceInfo();
 
@@ -31,7 +39,18 @@ export const SpaceInfo = () => {
 
 			<Divider direction={'horizontal'} />
 
-			<Text title={'Участники:'} />
+			<div className={s.membersHeader}>
+				<Text title={'Участники:'} />
+
+				<Button onClick={handleToggleAddSpaceMembersList}>Добавить</Button>
+
+				{isAddSpaceMembersModalOpen && (
+					<AddMembersModal
+						isOpen={isAddSpaceMembersModalOpen}
+						onClose={handleToggleAddSpaceMembersList}
+					/>
+				)}
+			</div>
 
 			<div className={s.membersList}>
 				{space?.members.map((member) => {
