@@ -65,12 +65,13 @@ export const CreateForm = (props: Props) => {
 	const handleSubmit = () => {
 		const formValues = getValues();
 
-		// TODO
 		createSpace({ formValues })
 			.then((createdSpace) => {
 				SpaceIDController.setCurrentSpaceIDAndSendEvent(createdSpace.id);
 				onFormClose();
+
 				mutateSpaces().finally();
+				dispatchEvent(new Event('updateAuth'));
 			})
 			.catch((err) => console.log(err));
 	};
