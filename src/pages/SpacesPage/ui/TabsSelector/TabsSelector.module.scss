@@ -1,0 +1,19 @@
+.TabsSelector {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small-indent);
+	margin-bottom: var(--medium-indent);
+	padding: var(--big-indent);
+
+	.tabsSelectorItem {
+		border-radius: var(--medium-round);
+		cursor: pointer;
+		padding: var(--small-indent);
+		position: relative;
+		transition: background-color 0.3s;
+	}
+
+	.active {
+		background-color: var(--light-gray-bg-color);
+	}
+}
